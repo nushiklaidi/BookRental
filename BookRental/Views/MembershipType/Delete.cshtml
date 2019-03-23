@@ -1,0 +1,47 @@
+﻿@model BookRental.Models.MembershipType
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <h3>Are you sure you want to delete?</h3>
+        <fieldset disabled>
+            <div class="row">
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.SignUpFee, new { @class = "control-label" })
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.SignUpFee, new { @class = "form-control" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.ChargeRateOneMonth, new { @class = "control-label" })
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.ChargeRateOneMonth, new { @class = "form-control" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.ChargeRateSixMonth, new { @class = "control-label" })
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.ChargeRateSixMonth, new { @class = "form-control" })
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <br />
+    <div>
+        @Html.Partial("_BackToListButtonPartial")
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </div>
+}

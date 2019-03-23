@@ -1,0 +1,48 @@
+﻿@model BookRental.Models.IndividualButtonPartial
+@using BookRental.Models
+
+<td>
+    @Html.Partial("_IndividualButtonPartial",
+                new IndividualButtonPartial
+                {
+                    Action = "Edit",
+                    ButtonType = "btn-success",
+                    Glyph = "edit",
+                    Text = "Edit",
+                    GenreId = Model.GenreId,
+                    BookId = Model.BookId,
+                    CustomerId = Model.CustomerId,
+                    MembershipTypeId = Model.MembershipTypeId,
+                    UserId = Model.UserId
+
+                })
+
+    @Html.Partial("_IndividualButtonPartial",
+                new IndividualButtonPartial
+                {
+                    Action = "Details",
+                    ButtonType = "btn-info",
+                    Glyph = "share-alt",
+                    Text = "Details",
+                    GenreId = Model.GenreId,
+                    BookId = Model.BookId,
+                    CustomerId = Model.CustomerId,
+                    MembershipTypeId = Model.MembershipTypeId,
+                    UserId = Model.UserId
+                })
+
+    @Html.Partial("_IndividualButtonPartial",
+                new IndividualButtonPartial
+                {
+                    Action = "Delete",
+                    ButtonType = "btn-danger",
+                    Glyph = "remove-circle",
+                    Text = "Delete",
+                    GenreId = Model.GenreId,
+                    BookId = Model.BookId,
+                    CustomerId = Model.CustomerId,
+                    MembershipTypeId = Model.MembershipTypeId,
+                    UserId = Model.UserId
+                })
+</td>
+

@@ -1,0 +1,29 @@
+﻿@model BookRental.ViewModel.BookRentalViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("Reserve", "BookRent"))
+{
+    @Html.AntiForgeryToken();
+    
+    <div class="row">
+        <div class="col-md-3">
+            <img class="thumbnail-img" src="@Model.ImageUrl" alt="" style="width:100%; height:auto" />
+        </div>
+        <div class="col-md-6">
+            <div>
+                <h2>@Model.Title</h2>
+                <h5>@Model.Author</h5>
+            </div>
+            <div>
+                <br />
+                <span>@Html.Raw(Model.Description)</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            book rental details
+        </div>
+    </div>
+}
+

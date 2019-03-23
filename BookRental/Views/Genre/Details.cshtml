@@ -1,0 +1,21 @@
+﻿@model BookRental.Models.Genre
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h3>Genre Details</h3>
+    <fieldset disabled>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            </div>
+        </div>
+    </fieldset>
+</div>
+<br />
+@Html.Partial("_BackToListButtonPartial")
+@Html.Partial("_EditButtonPartial", Model.Id)

@@ -1,0 +1,19 @@
+﻿@model BookRental.ViewModel.ThumbnailBoxViewModel
+
+<div class="row">
+    @if (Model.Thumbnails != null)
+    {
+        foreach (var thumbnail in Model.Thumbnails)
+        {
+            <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                    <h4><a href="@thumbnail.Link">@thumbnail.Title</a></h4>
+                    <a href="@thumbnail.Link" class="thumbnail">
+                        <img class="img-thumbnail" src="~/Content/images/@thumbnail.ImageUrl" alt="">
+                    </a>
+                    <p>@Html.Raw(thumbnail.Descrition)</p>
+                </div>
+            </div>
+        }
+    }
+</div>

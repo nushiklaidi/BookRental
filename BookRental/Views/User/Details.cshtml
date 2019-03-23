@@ -1,0 +1,48 @@
+﻿@model BookRental.ViewModel.UserViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h3>User Details</h3>
+    <fieldset disabled>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.FirstName, new { @class = "control-label" })
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.LastName, new { @class = "control-label" })
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.Phone, new { @class = "control-label" })
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.BirthDate, new { @class = "control-label" })
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.BirthDate, "{0:MM/dd/yyyy }", new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+        </div>
+    </fieldset>
+</div>
+<br />
+@Html.Partial("_BackToListButtonPartial")
+<a type="button" class="btn btn-success" href="@Url.Action("Edit", new { id = Model.Id})">
+    <span class="glyphicon glyphicon-edit"></span>
+    <span>Edit</span>
+</a>
