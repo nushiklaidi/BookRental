@@ -1,4 +1,5 @@
 ﻿@model BookRental.ViewModel.BookRentalViewModel
+@using BookRental.Utility
 @{
     ViewBag.Title = "Index";
 }
@@ -6,12 +7,14 @@
 @using (Html.BeginForm("Reserve", "BookRent"))
 {
     @Html.AntiForgeryToken();
-    
+
+    <h3>Create Book</h3>
+    <hr />
     <div class="row">
-        <div class="col-md-3">
-            <img class="thumbnail-img" src="@Model.ImageUrl" alt="" style="width:100%; height:auto" />
+        <div class="col-xs-6 col-sm-3">
+            <img class="thumbnail-img" src="~/Content/images/@Model.ImageUrl" alt="" style="width:100%; height:auto" />
         </div>
-        <div class="col-md-6">
+        <div class="col-xs-6 col-sm-3">
             <div>
                 <h2>@Model.Title</h2>
                 <h5>@Model.Author</h5>
@@ -22,7 +25,156 @@
             </div>
         </div>
         <div class="col-md-3">
-            book rental details
+            <h4>Product Details</h4>
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(m => m.ISBN)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(m => m.ISBN)
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(m => m.Publisher)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(m => m.Publisher)
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(m => m.PublicationDate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(m => m.PublicationDate)
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(m => m.ProductDimensions)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(m => m.ProductDimensions)
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(m => m.Pages)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(m => m.Pages)
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(m => m.Price)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(m => m.Price)
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(m => m.Publisher)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(m => m.Publisher)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+            @Html.HiddenFor(m => m.BookId)
+            <div>
+                @{
+                    List<SelectListItem> listItems = new List<SelectListItem>();
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = StaticDetails.OneMonth,
+                        Value = StaticDetails.OneMonthCount
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = StaticDetails.SixMonth,
+                        Value = StaticDetails.SixMonthCount
+                    });
+                }
+                @if (Model.RentalPriceOneMonth != 0 && Model.RentalPriceSixMonth != 0)
+                {
+                    //user is logged in and user is not admin user
+                    <div class="form-control">
+                        <div class="input-group">
+                            <label>MSRP:</label>
+                            <label id="lblMSRP">$@(Model.Price)</label>
+                        </div>
+                        <hr />
+                        <div class="input-group">
+                            <label>Rental Price: </label>
+                            <br />
+                            <label id="lblOneMonth">One Month: $@(Model.RentalPriceOneMonth)</label>
+                            <label id="lblOneMonth">Six Month: $@(Model.RentalPriceSixMonth)</label>
+                        </div>
+                        <br />
+                        <label>Select your rental Duration: </label>
+                        @Html.DropDownListFor(m => m.RentalDuration, listItems, new { @class = "form-control" })
+                        <span>Reserv before 3pm for same day pickup.</span>
+                        <br />
+                        @if (Model.Availability > 0)
+                        {
+                            <button type="submit" class="btn btn-success">
+                                <span class="glyphicon glyphicon-thumbs-up"></span>
+                                Reserve
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-danger" disabled>
+                                <span class="glyphicon glyphicon-thumbs-down"></span>
+                                Unavailable
+                            </button>
+                        }
+                    </div>
+                }
+                else
+                {
+                    //user is not logeed in or user is an admin
+                    <div class="form-control">
+                        <div class="input-group">
+                            <label>MSRP:</label>
+                            <label id="lblMSRP">$@(Model.Price)</label>
+                            @if (!User.IsInRole(StaticDetails.AdminUserRole) && !User.IsInRole(StaticDetails.EndUserRole))
+                            {
+                                //user not logged in
+                                <br />
+                                <span>@Html.ActionLink("Login", "Login", "Account") to unlock the rental price!</span>
+                                <br />
+                            }
+                        </div>
+                        <hr />
+                        @if (User.IsInRole(StaticDetails.AdminUserRole) && Model.Availability > 0)
+                        {
+                            //admin user eith create button
+                            @Html.ActionLink("Create Rental", "Create", "BookRent",
+                                new {
+                                    isbn = Model.ISBN,
+                                    title = Model.Title
+                                }, new { @class = "btn btn-primary"})
+                        }
+                        else
+                        {
+                            if (User.IsInRole(StaticDetails.AdminUserRole) && Model.Availability == 0)
+                            {
+                                //admin user with book not available
+                                <button type="submit" class="btn btn-danger" disabled>
+                                    <span class="glyphicon glyphicon-thumbs-down"></span>
+                                    Unavailable
+                                </button>
+                            }
+
+                        }
+                    </div>
+                }
+            </div>
         </div>
     </div>
 }

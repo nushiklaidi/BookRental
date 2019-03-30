@@ -24,7 +24,7 @@ namespace BookRental.Extensions
                                   Title = b.Title,
                                   Descrition = b.Description,
                                   ImageUrl = b.ImageUrl,
-                                  Link = "/Book/Details/" + b.Id
+                                  Link = "/BookDetail/Index/" + b.Id
                               }).ToList();
 
                 if (search != null)

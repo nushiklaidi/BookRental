@@ -21,7 +21,7 @@ namespace BookRental.Controllers
         }
 
         // GET: BookDetail
-        public ActionResult Index( int id)
+        public ActionResult Index(int id)
         {
             var userId = User.Identity.GetUserId();
             var user = db.Users.FirstOrDefault(u => u.Id == userId);
