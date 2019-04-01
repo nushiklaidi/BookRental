@@ -145,8 +145,8 @@ namespace BookRental.Controllers
             {
                 RegisterViewModel newUser = new RegisterViewModel
                 {
-                    //MembershipTypes = db.MembershipTypes.ToList(),
-                    MembershipTypes = db.MembershipTypes.Where(m => !m.Name.ToLower().Equals(StaticDetails.AdminUserRole.ToLower())).ToList(),
+                    MembershipTypes = db.MembershipTypes.ToList(),
+                    //MembershipTypes = db.MembershipTypes.Where(m => !m.Name.ToLower().Equals(StaticDetails.AdminUserRole.ToLower())).ToList(),
                     BirthDate = DateTime.Now
                 };
 

@@ -20,10 +20,12 @@ namespace BookRental
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/typeahead.bundle.min"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-flutly.css",
+                      "~/Content/typehead.css",
                       "~/Content/site.css"));
         }
     }

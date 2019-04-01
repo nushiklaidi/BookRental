@@ -89,6 +89,8 @@ namespace BookRental.ViewModel
         //User Details
         public string UserId { get; set; }
         
+        public string Email { get; set; }
+
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
         
