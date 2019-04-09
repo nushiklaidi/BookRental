@@ -21,7 +21,7 @@ namespace BookRental
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/typeahead.bundle.min"));
+                      "~/Scripts/typeahead.bundle.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-flutly.css",
