@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace BookRental.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class UserController : Controller
     {
         private ApplicationDbContext db;

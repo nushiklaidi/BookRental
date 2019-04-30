@@ -9,7 +9,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h3>Add New Book Rental</h3>
+        <h2>Add New Book Rental</h2>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger"})
         <div class="form-group">
@@ -70,7 +70,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.RentalPrice, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.Label(" ", new { id = "lblRentalPrice", @class = "form-control" })
+                    @Html.Label(" ", new { id = "lblRentalPrice",  @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
@@ -84,7 +84,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="button" value="Check Availability" id="btnAvailability" class="btn btn-success" />
-                <input type="button" value="Reserve" id="btnSubmit" style="display:none" class="btn btn-success" />
+                <input type="submit" value="Reserve" id="btnSubmit" style="display:none" class="btn btn-success" />
                 @Html.Partial("_BackToListButtonPartial")
             </div>
         </div>

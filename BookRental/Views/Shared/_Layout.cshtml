@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using BookRental.Utility
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -24,7 +26,14 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.Partial("_AdminMenuPartial")</li>
+                    @if (User.IsInRole(StaticDetails.AdminUserRole) || User.IsInRole(StaticDetails.EndUserRole))
+                    {
+                        <li>@Html.ActionLink("Rental Status", "Index", "BookRent")</li>
+                    }
+                    @if (User.IsInRole(StaticDetails.AdminUserRole))
+                    {
+                        <li>@Html.Partial("_AdminMenuPartial")</li>
+                    }                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

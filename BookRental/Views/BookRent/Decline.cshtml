@@ -1,0 +1,76 @@
+﻿@model BookRental.ViewModel.BookRentalViewModel
+@{
+    ViewBag.Title = "Decline";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <fieldset disabled>
+        <h2>BookRent Decline</h2>
+        <hr />
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="col-sm-2">
+                    @Html.LabelFor(m => m.ISBN, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.ISBN, new { @class = "form-control", enabled = "false" })
+                </div>
+                <div class="col-sm-2">
+                    @Html.LabelFor(m => m.Title, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control", enabled = "false" })
+                </div>
+                <div class="col-sm-2">
+                    @Html.LabelFor(m => m.RentalPrice, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.RentalPrice, new { @class = "form-control", enabled = "false" })
+                </div>
+                <div class="col-sm-2">
+                    @Html.LabelFor(m => m.StartDate, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.StartDate, "{0:MM/dd/yyyy}", new { @class = "form-control", enabled = "false" })
+                </div>
+                <div class="col-sm-2">
+                    @Html.LabelFor(m => m.ScheduleEndDate, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.ScheduleEndDate, new { @class = "form-control", enabled = "false" })
+                </div>
+                <div class="col-sm-2">
+                    @Html.LabelFor(m => m.AdditionalCharge, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.AdditionalCharge, new { @class = "form-control", enabled = "false" })
+                </div>
+                <div class="col-sm-2">
+                    @Html.LabelFor(m => m.RentalDuration, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.RentalDuration, new { @class = "form-control", enabled = "false" })
+                </div>
+                <div class="col-sm-2">
+                    @Html.LabelFor(m => m.Email, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", enabled = "false" })
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="image-book">
+                    <img class="thumbnail-img" src="@Model.ImageUrl" alt="" style="width:100%;height:auto;" />
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <br />
+    <input type="submit" value="Decline" id="btnSubmit" class="btn btn-danger" />
+    <p>@Html.Partial("_BackToListButtonPartial")</p>
+
+}
+

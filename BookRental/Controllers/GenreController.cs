@@ -1,4 +1,5 @@
 ﻿using BookRental.Models;
+using BookRental.Utility;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,6 +12,7 @@ using HttpPostAttribute = System.Web.Mvc.HttpPostAttribute;
 
 namespace BookRental.Controllers
 {
+    [System.Web.Http.Authorize(Roles = StaticDetails.AdminUserRole)]
     public class GenreController : Controller
     {
         private ApplicationDbContext _Context;

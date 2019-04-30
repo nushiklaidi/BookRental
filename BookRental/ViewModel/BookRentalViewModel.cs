@@ -1,4 +1,5 @@
 ﻿using BookRental.Models;
+using BookRental.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -108,5 +109,25 @@ namespace BookRental.ViewModel
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0: MMM dd yyyy}")]
         public DateTime? BirthDate { get; set; }
+
+        public string ActionName
+        {
+            get
+            {
+                if (Status.ToLower().Contains(StaticDetails.RequestedLower))
+                {
+                    return "Approve";
+                }
+                if (Status.ToLower().Contains(StaticDetails.ApprovedLower))
+                {
+                    return "PickUp";
+                }
+                if (Status.ToLower().Contains(StaticDetails.RentedLower))
+                {
+                    return "Return";
+                }
+                return null;
+            }
+        }
     }
 }
