@@ -14,7 +14,7 @@ Project example Asp.Net Core Mvc implementation of book rental system.
 # Functional Features
 
 - Rental Status
-- Membership
-- Genre
+- Membership Type
+- Genre Type
 - Book
 - Customer
