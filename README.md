@@ -4,6 +4,7 @@ Project example Asp.Net Core Mvc implementation of book rental system.
 # Features
 
 - Asp.Net Mvc
+- Api
 - EF / Entity Framework
 - Code First
 - C#
